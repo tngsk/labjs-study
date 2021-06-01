@@ -5,7 +5,7 @@ const getRandomInt = (max: number) => {
 }
 
 
-const templateParameters = [
+let templateParameters = [
   {
     'item1': '77',
     'item2': '82',
@@ -848,10 +848,7 @@ const templateParameters = [
   }
 ];
 
-
-/*
-const templateParameters = [
-{
+templateParameters = [{
   'item1': '77',
   'item2': '82',
   'item3': '92',
@@ -864,8 +861,8 @@ const templateParameters = [
   'graphFlag': '1',
   'size': '3',
   'img': 'graph-3-0.png'
-},
-{
+  },
+  {
   'item1': '77',
   'item2': '82',
   'item3': '92',
@@ -878,8 +875,8 @@ const templateParameters = [
   'graphFlag': '0',
   'size': '3',
   'img': 'number-3-0.png'
-},
-{
+  },
+  {
   'item1': '37',
   'item2': '32',
   'item3': '40',
@@ -892,8 +889,8 @@ const templateParameters = [
   'graphFlag': '1',
   'size': '3',
   'img': 'graph-3-1.png'
-},
-{
+  },
+  {
   'item1': '37',
   'item2': '32',
   'item3': '40',
@@ -906,8 +903,8 @@ const templateParameters = [
   'graphFlag': '0',
   'size': '3',
   'img': 'number-3-1.png'
-},
-{
+  },
+  {
   'item1': '45',
   'item2': '39',
   'item3': '30',
@@ -920,8 +917,8 @@ const templateParameters = [
   'graphFlag': '1',
   'size': '3',
   'img': 'graph-3-2.png'
-},
-{
+  },
+  {
   'item1': '45',
   'item2': '39',
   'item3': '30',
@@ -935,7 +932,15 @@ const templateParameters = [
   'size': '3',
   'img': 'number-3-2.png'
 }]
-*/
+
+
+
+
+
+
+
+
+
 
 const imageFiles = {
   'graph-3-0.png': 'embedded\u002F1ab1cfab622ed534a872b015853f819d6016d8a327c5c26457141345bd816d01.png',
@@ -1001,14 +1006,14 @@ const imageFiles = {
 };
 
 const teaching = new lab.util.fromObject({
-
   'type': 'lab.html.Page',
   'title': '教示',
+  'datacommit': false,
   'items': [
     {
       'type': 'text',
       'title': 'もっとも大きなデータ要素を探す実験',
-      'content': '\u003Cp\u003E本日は実験にご協力いただきありがとうございます！\u003C\u002Fp\u003E\n\n\u003Cp\u003E実験では、画面内のどこかに横に並んだ「数字」か「棒グラフ」が表示されます。その中でもっとも大きいデータ要素（最も値の大きな数値か棒）をクリックしてください。\u003C\u002Fp\u003E\n\n\u003Csmall\u003E（タッチパネル液晶をお使いの場合は指タップでも実験可能ですが、画面の小さいスマホは使わないでください）\u003C\u002Fsmall\u003E\n\n\u003Cp\u003E選択はなるべく速く、そしてなるべく正確に行ってください。\u003C\u002Fp\u003E\n\n\u003Cp\u003E毎回、判断していただく画面に先立ち、画面の中央に「＋」、下の方に「クリックしてスタート」という文字がある画面が提示されます。\u003C\u002Fp\u003E\n\n\u003Cp\u003E毎回必ず「＋」に視線を置いた上、「クリックしてスタート」を押して実験を始めてください。指タップでももちろん可能です。\n\u003Cul\u003E\n\u003Cli\u003E（マウスボタン（指）の押し下げではなく、離したとき（mouse-up）に実験が始まります。\n\u003Cli\u003Eですので、マウスを押し下げた上で「＋」に視線を合わせてからマウスボタンを離して実験を始めるとスムーズです。\n\u003C\u002Ful\u003E\n\n\u003Cp\u003E判断いただく数字やグラフは全部で60組となります。すぐ終わると思います。\u003C\u002Fp\u003E\n\n\u003Cp\u003Eそれでは準備ができたら右の「実験を始める」をクリックして実験を始めてください。\u003C\u002Fp\u003E\n\u003Cp\u003Eよろしくお願いします！\u003C\u002Fp\u003E'
+      'content': '\u003Cp\u003E本日は実験にご協力いただきありがとうございます！\u003C\u002Fp\u003E\n\n\u003Cp\u003E実験では、画面内のどこかに横に並んだ「数字」か「棒グラフ」が表示されます。その中でもっとも大きいデータ要素（最も値の大きな数値か棒）をクリックしてください。\u003C\u002Fp\u003E\n\n\u003Csmall\u003E（タッチパネル液晶をお使いの場合は指タップでも実験可能ですが、画面の小さいスマホは使わないでください）\u003C\u002Fsmall\u003E\n\n\u003Cp\u003E選択はなるべく速く、そしてなるべく正確に行ってください。\u003C\u002Fp\u003E\n\n\u003Cp\u003E毎回、判断していただく画面に先立ち、画面の中央に「＋」、下の方に「クリックしてスタート」という文字がある画面が提示されます。\u003C\u002Fp\u003E\n\n\u003Cp\u003E毎回必ず「＋」に視線を置いた上、「クリックしてスタート」を押して実験を始めてください。指タップでももちろん可能です。\n\u003Cul\u003E\n\u003Cli\u003Eマウスボタン（指）の押し下げではなく、離したとき（mouse-up）に実験が始まります。\n\u003Cli\u003Eですので、マウスを押し下げた上で「＋」に視線を合わせてからマウスボタンを離して実験を始めるとスムーズです。\n\u003C\u002Ful\u003E\n\n\u003Cp\u003E判断いただく数字やグラフは全部で60組となります。すぐ終わると思います。\u003C\u002Fp\u003E\n\n\u003Cp\u003Eそれでは準備ができたら右の「実験を始める」をクリックして実験を始めてください。\u003C\u002Fp\u003E\n\u003Cp\u003Eよろしくお願いします！\u003C\u002Fp\u003E'
     }
   ],
   'scrollTop': true,
@@ -1019,12 +1024,13 @@ const teaching = new lab.util.fromObject({
     '': ''
   },
   'parameters': {},
-  'messageHandlers': {},
+  'messageHandlers': {}
 })
 
 const fixationCross = new lab.util.fromObject({
   'type': 'lab.canvas.Screen',
   'title': 'Fixation Cross',
+  'datacommit': false,
   'content': [
     {
       'type': 'i-text',
@@ -1075,10 +1081,6 @@ const fixationCross = new lab.util.fromObject({
       'label': 'btn_start'
     }
   ],
-  'viewport': [
-    800,
-    600
-  ],
   'files': {},
   'responses': {
     'mouseup @btn_start': 'start'
@@ -1122,10 +1124,6 @@ const stimulusResponse = () => {
   let stimulus = new lab.util.fromObject({
     'type': 'lab.canvas.Screen',
     'title': 'Stimulus + Response',
-    'viewport': [
-      800,
-      600
-    ],
     'content': [
       {
         'type': 'image',
@@ -1159,40 +1157,51 @@ const stimulusResponse = () => {
       'click @7': '7'
     },
     'parameters': {
+      'disp_x': 0,
+      'disp_y': 0
     },
     'messageHandlers': {
+
       'before:prepare': function () {
-        // console.log((<any>this))
-        let contents = (<any>this).options.content
-        const parameters = (<any>this).parent.options.parameters
+
+        let options = (<any>this).options
+        let contents = options.content
+        const aggregateParameters = (<any>this).aggregateParameters
+
+        // 正解
+        options.correctResponse = aggregateParameters.max_index
 
         // aoiを動的に追加する
-        const offset = (7 - parameters.size) / 2
-        // for (let i = 0; i < parameters.size; i++){
-        //   contents.push(aoi(i+1, offset))
-        //   contents.push(rect(i+1, offset))
-        // }
+        const offset = (7 - aggregateParameters.size) / 2
         for (let i = 0; i < 7; i++){
-
-          let offset = (7 - parameters.size) / 2
-          if (i >= parameters.size) {
+          let offset = (7 - aggregateParameters.size) / 2
+          if (i >= aggregateParameters.size) {
             offset = -999
           }
           contents.push(aoi(i+1, offset))
-          contents.push(rect(i+1, offset))
+          // contents.push(rect(i+1, offset))
         }
 
         // 表示位置をランダムにする
+  
         const width = document.documentElement.clientWidth - 600
         const height = document.documentElement.clientHeight - 400
-        const x = getRandomInt(width* 2 ) - width;
-        const y = getRandomInt(height * 2) - height;
-
+        
+        const x = (getRandomInt(width) - width/2) * 0.8;
+        const y = (getRandomInt(height) - height/2) * 0.8;
+        
         contents.forEach(function (element:any) {
           element.left += x
           element.top += y
         });
+
+        (<any>this).options.parameters.disp_x = x;
+        (<any>this).options.parameters.disp_y = y;
         
+      },
+      'run': function () {
+        const canvas = document.getElementsByTagName('canvas')[0]
+        console.log(canvas)
       }
     }
   })
@@ -1204,6 +1213,7 @@ const stimulusResponse = () => {
 const closing = new lab.util.fromObject({
   'type': 'lab.html.Page',
   'title': 'データDL指示・御礼',
+  'datacommit': false,
   'items': [
     {
       'type': 'text',
@@ -1235,7 +1245,7 @@ const template = new lab.flow.Sequence({
     fixationCross,
     stimulusResponse()
   ],
-  shuffle: false
+  'shuffle': false
 })
 
 const experiment = new lab.flow.Sequence({
@@ -1246,9 +1256,7 @@ const experiment = new lab.flow.Sequence({
       'title':'繰り返し（実験パラメータ）',
       'templateParameters': templateParameters,
       'template': template,
-      'sample': {
-        mode: 'draw-shuffle'
-      }
+      'shuffle': true
     }),
     closing
   ]
