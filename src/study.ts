@@ -1,5 +1,10 @@
 declare var lab: any
 
+const getRandomInt = (max: number) => {
+  return Math.floor(Math.random() * max)
+}
+
+
 const templateParameters = [
   {
     'item1': '77',
@@ -843,6 +848,95 @@ const templateParameters = [
   }
 ];
 
+
+/*
+const templateParameters = [
+{
+  'item1': '77',
+  'item2': '82',
+  'item3': '92',
+  'item4': '0',
+  'item5': '0',
+  'item6': '0',
+  'item7': '0',
+  'max': '92',
+  'max_index': '3',
+  'graphFlag': '1',
+  'size': '3',
+  'img': 'graph-3-0.png'
+},
+{
+  'item1': '77',
+  'item2': '82',
+  'item3': '92',
+  'item4': '0',
+  'item5': '0',
+  'item6': '0',
+  'item7': '0',
+  'max': '92',
+  'max_index': '3',
+  'graphFlag': '0',
+  'size': '3',
+  'img': 'number-3-0.png'
+},
+{
+  'item1': '37',
+  'item2': '32',
+  'item3': '40',
+  'item4': '0',
+  'item5': '0',
+  'item6': '0',
+  'item7': '0',
+  'max': '40',
+  'max_index': '3',
+  'graphFlag': '1',
+  'size': '3',
+  'img': 'graph-3-1.png'
+},
+{
+  'item1': '37',
+  'item2': '32',
+  'item3': '40',
+  'item4': '0',
+  'item5': '0',
+  'item6': '0',
+  'item7': '0',
+  'max': '40',
+  'max_index': '3',
+  'graphFlag': '0',
+  'size': '3',
+  'img': 'number-3-1.png'
+},
+{
+  'item1': '45',
+  'item2': '39',
+  'item3': '30',
+  'item4': '0',
+  'item5': '0',
+  'item6': '0',
+  'item7': '0',
+  'max': '45',
+  'max_index': '1',
+  'graphFlag': '1',
+  'size': '3',
+  'img': 'graph-3-2.png'
+},
+{
+  'item1': '45',
+  'item2': '39',
+  'item3': '30',
+  'item4': '0',
+  'item5': '0',
+  'item6': '0',
+  'item7': '0',
+  'max': '45',
+  'max_index': '1',
+  'graphFlag': '0',
+  'size': '3',
+  'img': 'number-3-2.png'
+}]
+*/
+
 const imageFiles = {
   'graph-3-0.png': 'embedded\u002F1ab1cfab622ed534a872b015853f819d6016d8a327c5c26457141345bd816d01.png',
   'graph-3-1.png': 'embedded\u002F9f6c7368f2e2c3794c602ba0cff376603678d1182e01f15f357e244e3a624124.png',
@@ -993,125 +1087,119 @@ const fixationCross = new lab.util.fromObject({
   'messageHandlers': {}
 })
 
-const stimulusResponse = new lab.util.fromObject({
-  'type': 'lab.canvas.Screen',
-  'title': 'Stimulus + Response',
-  'viewport': [
-    800,
-    600
-  ],
-  'content': [
-    {
-      'type': 'image',
-      'left': '0',
-      'top': '0',
-      'angle': 0,
-      'width': '600',
-      'height': '400',
-      'stroke': null,
-      'strokeWidth': 0,
-      'fill': 'black',
-      'src': '${ this.files[parameters.img] }',
-      'autoScale': false
-    },
-    {
+const stimulusResponse = () => {
+
+  const aoi = (target: number, offset: number) => {
+    return {
       'type': 'aoi',
-      'left': '-249',
-      'top': '38',
+      'left': -332 + 83 * (target + offset),
+      'top': 13,
       'angle': 0,
-      'width': '65',
-      'height': 300,
+      'width': 65,
+      'height': 350,
       'stroke': null,
       'strokeWidth': 1,
       'fill': 'rgba(0, 0, 0, 0.2)',
-      'label': '1'
-    },
-    {
-      'type': 'aoi',
-      'left': '-166',
-      'top': 38,
-      'angle': 0,
-      'width': '65',
-      'height': 300,
-      'stroke': null,
-      'strokeWidth': 1,
-      'fill': 'rgba(0, 0, 0, 0.2)',
-      'label': '2'
-    },
-    {
-      'type': 'aoi',
-      'left': '-83',
-      'top': 38,
-      'angle': 0,
-      'width': '65',
-      'height': 300,
-      'stroke': null,
-      'strokeWidth': 1,
-      'fill': 'rgba(0, 0, 0, 0.2)',
-      'label': '3'
-    },
-    {
-      'type': 'aoi',
-      'left': 0,
-      'top': '38',
-      'angle': 0,
-      'width': '65',
-      'height': 300,
-      'stroke': null,
-      'strokeWidth': 1,
-      'fill': 'rgba(0, 0, 0, 0.2)',
-      'label': '4'
-    },
-    {
-      'type': 'aoi',
-      'left': '83',
-      'top': '38',
-      'angle': 0,
-      'width': '65',
-      'height': 300,
-      'stroke': null,
-      'strokeWidth': 1,
-      'fill': 'rgba(0, 0, 0, 0.2)',
-      'label': '5'
-    },
-    {
-      'type': 'aoi',
-      'left': '166',
-      'top': '38',
-      'angle': 0,
-      'width': '65',
-      'height': 300,
-      'stroke': null,
-      'strokeWidth': 1,
-      'fill': 'rgba(0, 0, 0, 0.2)',
-      'label': '6'
-    },
-    {
-      'type': 'aoi',
-      'left': '249',
-      'top': '38',
-      'angle': 0,
-      'width': '65',
-      'height': 300,
-      'stroke': null,
-      'strokeWidth': 1,
-      'fill': 'rgba(0, 0, 0, 0.2)',
-      'label': '7'
+      'label': target
     }
-  ],
-  'files': imageFiles,
-  'responses': {
-    'click @1': '1',
-    'click @2': '2',
-    'click @3': '3',
-    'click @4': '4',
-    'click @5': '5',
-    'click @6': '6',
-    'click @7': '7'
-  },
-  'parameters': {},
-  'messageHandlers': {}
-})
+  }
+
+  const rect = (target: number, offset: number) => {
+    return {
+      'type': 'rect',
+      'left': -332 + 83 * (target + offset),
+      'top': 13,
+      'angle': 0,
+      'width': 65,
+      'height': 350,
+      'stroke': null,
+      'strokeWidth': 1,
+      'fill': 'rgba(0, 0, 0, 0.5)',
+      'label': target
+    }
+  }
+
+  let stimulus = new lab.util.fromObject({
+    'type': 'lab.canvas.Screen',
+    'title': 'Stimulus + Response',
+    'viewport': [
+      800,
+      600
+    ],
+    'content': [
+      {
+        'type': 'image',
+        'left': 0,
+        'top': 0,
+        'angle': 0,
+        'width': 600,
+        'height': 400,
+        'stroke': null,
+        'strokeWidth': 0,
+        'fill': 'black',
+        'src': '${ this.files[parameters.img] }',
+        'autoScale': false
+      },
+      // aoi(1),
+      // aoi(2),
+      // aoi(3),
+      // aoi(4),
+      // aoi(5),
+      // aoi(6),
+      // aoi(7)
+    ],
+    'files': imageFiles,
+    'responses': {
+      'click @1': '1',
+      'click @2': '2',
+      'click @3': '3',
+      'click @4': '4',
+      'click @5': '5',
+      'click @6': '6',
+      'click @7': '7'
+    },
+    'parameters': {
+    },
+    'messageHandlers': {
+      'before:prepare': function () {
+        // console.log((<any>this))
+        let contents = (<any>this).options.content
+        const parameters = (<any>this).parent.options.parameters
+
+        // aoiを動的に追加する
+        const offset = (7 - parameters.size) / 2
+        // for (let i = 0; i < parameters.size; i++){
+        //   contents.push(aoi(i+1, offset))
+        //   contents.push(rect(i+1, offset))
+        // }
+        for (let i = 0; i < 7; i++){
+
+          let offset = (7 - parameters.size) / 2
+          if (i >= parameters.size) {
+            offset = -999
+          }
+          contents.push(aoi(i+1, offset))
+          contents.push(rect(i+1, offset))
+        }
+
+        // 表示位置をランダムにする
+        const width = document.documentElement.clientWidth - 600
+        const height = document.documentElement.clientHeight - 400
+        const x = getRandomInt(width* 2 ) - width;
+        const y = getRandomInt(height * 2) - height;
+
+        contents.forEach(function (element:any) {
+          element.left += x
+          element.top += y
+        });
+        
+      }
+    }
+  })
+
+ 
+  return stimulus
+}
 
 const closing = new lab.util.fromObject({
   'type': 'lab.html.Page',
@@ -1120,11 +1208,11 @@ const closing = new lab.util.fromObject({
     {
       'type': 'text',
       'title': 'お疲れ様でした！',
-      'content': '右下の「データダウンロードを始める」を押して、この画面の上部にあらわれる灰色の「Download data」ボタンを押してCSVファイルを保存してください。\n\n\u003Cbr\u003E\u003Cbr\u003Eデータは研究以外の目的には使用しません。またこのCSVファイルには個人が特定できるデータは含まれていません。実験にご協力いただきありがとうございました！'
+      'content': '右の「データダウンロード」を押して、CSVファイルを保存してください。\n\n\u003Cbr\u003E\u003Cbr\u003Eデータは研究以外の目的には使用しません。またこのCSVファイルには個人が特定できるデータは含まれていません。実験にご協力いただきありがとうございました！'
     }
   ],
   'scrollTop': true,
-  'submitButtonText': 'データダウンロードを始める→',
+  'submitButtonText': 'データダウンロード',
   'submitButtonPosition': 'right',
   'files': {},
   'responses': {
@@ -1145,12 +1233,12 @@ const closing = new lab.util.fromObject({
 const template = new lab.flow.Sequence({
   'content': [
     fixationCross,
-    stimulusResponse
+    stimulusResponse()
   ],
   shuffle: false
 })
 
-const study = new lab.flow.Sequence({
+const experiment = new lab.flow.Sequence({
   datastore: new lab.data.Store(),
   content: [
     teaching,
@@ -1158,10 +1246,12 @@ const study = new lab.flow.Sequence({
       'title':'繰り返し（実験パラメータ）',
       'templateParameters': templateParameters,
       'template': template,
-      shuffle:true
+      'sample': {
+        mode: 'draw-shuffle'
+      }
     }),
     closing
   ]
 })
 
-study.run()
+experiment.run()
