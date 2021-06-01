@@ -848,6 +848,9 @@ let templateParameters = [
   }
 ];
 
+
+/*
+
 templateParameters = [{
   'item1': '77',
   'item2': '82',
@@ -933,7 +936,7 @@ templateParameters = [{
   'img': 'number-3-2.png'
 }]
 
-
+*/
 
 
 
@@ -1187,8 +1190,8 @@ const stimulusResponse = () => {
         const width = document.documentElement.clientWidth - 600
         const height = document.documentElement.clientHeight - 400
         
-        const x = (getRandomInt(width) - width/2) * 0.8;
-        const y = (getRandomInt(height) - height/2) * 0.8;
+        const x = (getRandomInt(width) - width/2) * 0.6;
+        const y = (getRandomInt(height) - height/2) * 0.6;
         
         contents.forEach(function (element:any) {
           element.left += x
