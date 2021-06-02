@@ -4,7 +4,6 @@ const getRandomInt = (max: number) => {
   return Math.floor(Math.random() * max)
 }
 
-
 let templateParameters = [
   {
     'item1': '77',
@@ -1016,7 +1015,7 @@ const teaching = new lab.util.fromObject({
     {
       'type': 'text',
       'title': 'もっとも大きなデータ要素を探す実験',
-      'content': '\u003Cp\u003E本日は実験にご協力いただきありがとうございます！\u003C\u002Fp\u003E\n\n\u003Cp\u003E実験では、画面内のどこかに横に並んだ「数字」か「棒グラフ」が表示されます。その中でもっとも大きいデータ要素（最も値の大きな数値か棒）をクリックしてください。\u003C\u002Fp\u003E\n\n\u003Csmall\u003E（タッチパネル液晶をお使いの場合は指タップでも実験可能ですが、画面の小さいスマホは使わないでください）\u003C\u002Fsmall\u003E\n\n\u003Cp\u003E選択はなるべく速く、そしてなるべく正確に行ってください。\u003C\u002Fp\u003E\n\n\u003Cp\u003E毎回、判断していただく画面に先立ち、画面の中央に「＋」、下の方に「クリックしてスタート」という文字がある画面が提示されます。\u003C\u002Fp\u003E\n\n\u003Cp\u003E毎回必ず「＋」に視線を置いた上、「クリックしてスタート」を押して実験を始めてください。指タップでももちろん可能です。\n\u003Cul\u003E\n\u003Cli\u003Eマウスボタン（指）の押し下げではなく、離したとき（mouse-up）に実験が始まります。\n\u003Cli\u003Eですので、マウスを押し下げた上で「＋」に視線を合わせてからマウスボタンを離して実験を始めるとスムーズです。\n\u003C\u002Ful\u003E\n\n\u003Cp\u003E判断いただく数字やグラフは全部で60組となります。すぐ終わると思います。\u003C\u002Fp\u003E\n\n\u003Cp\u003Eそれでは準備ができたら右の「実験を始める」をクリックして実験を始めてください。\u003C\u002Fp\u003E\n\u003Cp\u003Eよろしくお願いします！\u003C\u002Fp\u003E'
+      'content': '\u003Cp\u003E本日は実験にご協力いただきありがとうございます！\u003C\u002Fp\u003E\n\n\u003Cp\u003E実験では、画面内のどこかに横に並んだ「数字」か「棒グラフ」が表示されます。その中でもっとも大きいデータ要素（最も値の大きな数値か棒）をクリックしてください。\u003C\u002Fp\u003E\n\n\u003Csmall\u003E（タッチパネル液晶をお使いの場合は指タップでも実験可能ですが、画面の小さいスマホは使わないでください）\u003C\u002Fsmall\u003E\n\n\u003Cp\u003E選択はなるべく速く、そしてなるべく正確に行ってください。\u003C\u002Fp\u003E\n\n\u003Cp\u003E毎回、判断していただく画面に先立ち、画面の中央に「＋」、下の方に「クリックしてスタート」という文字がある画面が提示されます。\u003C\u002Fp\u003E\n\n\u003Cp\u003E毎回必ず「＋」に視線を置いた上、「クリックしてスタート」を押して実験を始めてください。指タップでももちろん可能です。\n\u003Cul\u003E\n\u003Cli\u003Eマウスボタン（指）の押し下げではなく、離したとき（mouse-up）に実験が始まります。\n\u003Cli\u003Eですので、マウスを押し下げた上で「＋」に視線を合わせてからマウスボタンを離して実験を始めるとスムーズです。\n\u003C\u002Ful\u003E\n\n\u003Cp\u003E判断いただく数字やグラフは全部で60組となります。すぐ終わると思います。\u003C\u002Fp\u003E\n\n\u003Cp\u003E<p>画面と近すぎず遠すぎず，腕を伸ばしたくらいのところで実験してください。</p>それでは準備ができたら右の「実験を始める」をクリックして実験を始めてください。\u003C\u002Fp\u003E\n\u003Cp\u003Eよろしくお願いします！\u003C\u002Fp\u003E'
     }
   ],
   'scrollTop': true,
@@ -1032,6 +1031,7 @@ const teaching = new lab.util.fromObject({
 
 const fixationCross = new lab.util.fromObject({
   'type': 'lab.canvas.Screen',
+  'timeout': 500,
   'title': 'Fixation Cross',
   'datacommit': false,
   'content': [
@@ -1126,6 +1126,7 @@ const stimulusResponse = () => {
 
   let stimulus = new lab.util.fromObject({
     'type': 'lab.canvas.Screen',
+    'timeout': 500,
     'title': 'Stimulus + Response',
     'content': [
       {
@@ -1187,11 +1188,13 @@ const stimulusResponse = () => {
 
         // 表示位置をランダムにする
   
-        const width = document.documentElement.clientWidth - 600
-        const height = document.documentElement.clientHeight - 400
-        
-        const x = (getRandomInt(width) - width/2) * 0.6;
-        const y = (getRandomInt(height) - height/2) * 0.6;
+        // const width = document.documentElement.clientWidth - 600
+        // const height = document.documentElement.clientHeight - 400
+        const width = 400
+        const height = 200
+
+        const x = (getRandomInt(width) - width/2);
+        const y = (getRandomInt(height) - height/2);
         
         contents.forEach(function (element:any) {
           element.left += x
@@ -1221,7 +1224,7 @@ const closing = new lab.util.fromObject({
     {
       'type': 'text',
       'title': 'お疲れ様でした！',
-      'content': '右の「データダウンロード」を押して、CSVファイルを保存してください。\n\n\u003Cbr\u003E\u003Cbr\u003Eデータは研究以外の目的には使用しません。またこのCSVファイルには個人が特定できるデータは含まれていません。実験にご協力いただきありがとうございました！'
+      'content': '画面右下の「データダウンロード」を押して、CSVファイルを保存してください。\n\n\u003Cbr\u003E\u003Cbr\u003Eデータは研究以外の目的には使用しません。またこのCSVファイルには個人が特定できるデータは含まれていません。実験にご協力いただきありがとうございました！'
     }
   ],
   'scrollTop': true,
